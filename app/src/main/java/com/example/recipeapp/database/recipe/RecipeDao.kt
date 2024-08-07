@@ -9,7 +9,7 @@ import com.example.recipeapp.models.Recipe
 @Dao
 interface RecipeDao {
     @Query("Select * from Recipe where idMeal = :userId")
-    fun getFavorites(userId: Int): LiveData<List<Recipe>>
+    fun getFavorites(userId: Int): List<Recipe>
 
     @Insert
     suspend fun insertRecipe(recipe: Recipe)

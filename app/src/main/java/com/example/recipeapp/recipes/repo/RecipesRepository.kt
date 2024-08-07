@@ -7,6 +7,6 @@ import retrofit2.Response
 
 interface RecipesRepository {
     suspend fun getRemoteRecipes() : Response<RecipeResponse>
-    suspend fun getFavorites(userId: Int) : LiveData<List<Recipe>>
+    suspend fun getFavorites(userId: Int) : List<Recipe>
     suspend fun insertRecipe(recipe: Recipe)
 }

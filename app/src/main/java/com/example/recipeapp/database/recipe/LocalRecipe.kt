@@ -22,7 +22,7 @@ class LocalRecipe private constructor(context: Context) : LocalRecipeInterface {
         }
     }
 
-    override fun getFavorites(userId: Int): LiveData<List<Recipe>> {
+    override fun getFavorites(userId: Int): List<Recipe> {
         return recipeDao.getFavorites(userId)
     }
 
