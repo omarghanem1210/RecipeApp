@@ -9,7 +9,7 @@ class LocalRecipe private constructor(context: Context) : LocalRecipeInterface {
     init {
         val recipeDatabase = RecipeDatabase.getInstance(context.applicationContext)
         if (recipeDatabase != null){
-            recipeDao = recipeDatabase.getProductDao()
+            recipeDao = recipeDatabase.getRecipeDao()
         }
     }
     companion object {
@@ -23,14 +23,14 @@ class LocalRecipe private constructor(context: Context) : LocalRecipeInterface {
     }
 
     override fun getAllRecipes(): LiveData<List<Recipe>> {
-        return recipeDao.getAllProducts()
+        return recipeDao.getAllRecipes()
     }
 
     override suspend fun insertRecipe(quote: Recipe) {
-        recipeDao.insertProduct(quote);
+        recipeDao.insertRecipe(quote);
     }
 
     override suspend fun deleteRecipe(quote: Recipe) {
-        recipeDao.deleteProduct(quote)
+        recipeDao.deleteRecipe(quote)
     }
 }

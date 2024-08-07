@@ -9,13 +9,13 @@ import com.example.recipeapp.models.Recipe
 @Dao
 interface RecipeDao {
     @Query("Select * from Recipe")
-    fun getAllProducts(): LiveData<List<Recipe>>
+    fun getAllRecipes(): LiveData<List<Recipe>>
 
     @Insert
-    suspend fun insertProduct(recipe: Recipe)
+    suspend fun insertRecipe(recipe: Recipe)
 
     @Delete
-    suspend fun deleteProduct(recipe: Recipe)
+    suspend fun deleteRecipe(recipe: Recipe)
 
 
 }

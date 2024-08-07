@@ -8,7 +8,7 @@ import com.example.recipeapp.models.Recipe
 
 @Database(entities = [Recipe::class], version = 1)
 abstract class RecipeDatabase: RoomDatabase() {
-    abstract fun getProductDao(): RecipeDao
+    abstract fun getRecipeDao(): RecipeDao
     companion object{
         private var instance:RecipeDatabase? = null
         @Synchronized
