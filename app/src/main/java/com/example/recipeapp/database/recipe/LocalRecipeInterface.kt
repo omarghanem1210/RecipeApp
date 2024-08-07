@@ -5,7 +5,7 @@ import com.example.recipeapp.models.Recipe
 
 interface LocalRecipeInterface{
 
-    fun getAllRecipes(): LiveData<List<Recipe>>
+    fun getFavorites(userId: Int): LiveData<List<Recipe>>
     suspend fun insertRecipe(quote: Recipe)
     suspend fun deleteRecipe(quote: Recipe)
 }

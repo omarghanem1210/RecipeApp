@@ -22,8 +22,8 @@ class LocalRecipe private constructor(context: Context) : LocalRecipeInterface {
         }
     }
 
-    override fun getAllRecipes(): LiveData<List<Recipe>> {
-        return recipeDao.getAllRecipes()
+    override fun getFavorites(userId: Int): LiveData<List<Recipe>> {
+        return recipeDao.getFavorites(userId)
     }
 
     override suspend fun insertRecipe(quote: Recipe) {
