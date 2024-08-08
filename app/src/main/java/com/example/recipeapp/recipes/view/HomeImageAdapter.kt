@@ -15,7 +15,7 @@ import com.example.recipeapp.models.Recipe
 import com.example.recipeapp.recipes.view.RecyclerDataClass
 
 
-class HomeImageAdapter( val context: Context) : RecyclerView.Adapter<HomeImageAdapter.ItemViewHolder>() {
+class HomeImageAdapter( val context: Context,private val onItemClick: (Recipe) -> Unit) : RecyclerView.Adapter<HomeImageAdapter.ItemViewHolder>() {
     private var recipes : List<Recipe> = listOf<Recipe>()
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -37,6 +37,7 @@ class HomeImageAdapter( val context: Context) : RecyclerView.Adapter<HomeImageAd
         val currentItem = recipes[position]
         holder.name.setText(recipes.get(position)?.strMeal)
         Glide.with(context).load(currentItem.strMealThumb).into(holder.image)
+        holder.itemView.setOnClickListener { onItemClick(currentItem) }
         Log.i("Result","OnBindViewHolder : ")
 
     }

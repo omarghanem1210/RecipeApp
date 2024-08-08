@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,9 +55,12 @@ class HomeFragment : Fragment() {
             RecyclerDataClass(R.drawable.delicious_fried_noodle_with_smoky_effect))
 
 
-        myAdapter = HomeImageAdapter(requireActivity())
-            // Handle item click here
+        myAdapter = HomeImageAdapter(requireActivity()){recipe ->
 
+        val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment(recipe)
+        view.findNavController().navigate(action)
+            // Handle item click here
+}
         recyclerView.adapter = myAdapter
         Log.i("Result","Home Adapter : ")
 
