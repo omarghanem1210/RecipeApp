@@ -66,9 +66,8 @@ dependencies {
     implementation ("androidx.room:room-rxjava2:2.6.1")
     implementation ("androidx.room:room-guava:2.6.1")
     implementation ("androidx.room:room-ktx:2.6.1")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.google.code.gson:gson:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.media3:media3-ui:1.4.0")
+    implementation("com.google.ar.sceneform:filament-android:1.17.1")
     kapt("androidx.room:room-compiler:2.6.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
@@ -77,4 +76,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.android.exoplayer:exoplayer:2.18.1")
+    implementation ("androidx.media3:media3-exoplayer:1.0.0")
+    implementation ("androidx.media3:media3-ui:1.0.0")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+
+
 }
