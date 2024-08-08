@@ -24,10 +24,11 @@
         android:label="fragment_recipe_detail"
         tools:layout="@layout/fragment_recipe_detail" >
         <argument
-            android:name="imageArg"
-            app:argType="integer"
+            android:name="RecipeArg"
+            app:argType="com.example.recipeapp.models.Recipe"
 
             />
+
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
