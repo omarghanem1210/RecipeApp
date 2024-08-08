@@ -1,10 +1,13 @@
 package com.example.recipeapp.models
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "Recipe")
+@Parcelize
 data class Recipe(
     @PrimaryKey
     @SerializedName("idMeal") val idMeal: String,
@@ -36,5 +39,5 @@ data class Recipe(
     @SerializedName("strMeasure9") val strMeasure9: String?,
     @SerializedName("strMeasure10") val strMeasure10: String?,
     val userId: String? = null
-)
+): Parcelable
 
