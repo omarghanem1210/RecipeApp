@@ -37,7 +37,7 @@ class LoginActivty : AppCompatActivity() {
 
     private fun loginDatabase(username: String, password: String){
         val userExists = databaseHelper.readUser(username, password)
-        if (userExists){
+        if (userExists != null){
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

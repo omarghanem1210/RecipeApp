@@ -18,6 +18,7 @@
             app:destination="@id/favouriteFragment" />
 
     </fragment>
+
     <fragment
         android:id="@+id/recipeDetailFragment"
         android:name="com.example.recipeapp.recipes.view.RecipeDetailFragment"
@@ -51,7 +52,12 @@
         android:id="@+id/favouriteFragment"
         android:name="com.example.recipeapp.recipes.view.FavouriteFragment"
         android:label="fragment_favouite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite">
+    <action
+        android:id="@+id/action_favoritesFragment_to_recipeDetailFragment"
+        app:destination="@id/recipeDetailFragment" />
+
+    </fragment>
 
 
 </navigation>
