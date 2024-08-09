@@ -29,4 +29,19 @@ class RecipeViewModel(var recipesRepository: RecipesRepository): ViewModel() {
         }
 
     }
+
+    fun getSearchRecipes(searchString: String){
+        if(searchString.isEmpty()){
+            getRecipes()
+        }
+        else{
+            val unFilteredList = _allRecipes.value ?: emptyList()
+            val filteredList = unFilteredList.filter { recipe ->
+                recipe.strMeal?.contains(searchString, ignoreCase = true) ?: false
+            }
+                _allRecipes.value = filteredList
+
+        }
+
+    }
 }
