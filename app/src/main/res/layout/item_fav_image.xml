@@ -28,8 +28,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
 
 
-            app:layout_constraintEnd_toStartOf="@+id/FavText"
-            app:srcCompat="@drawable/charger" />
+            app:layout_constraintEnd_toStartOf="@+id/FavText" />
 
 
         <TextView

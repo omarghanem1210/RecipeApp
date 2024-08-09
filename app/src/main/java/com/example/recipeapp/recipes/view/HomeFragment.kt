@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -26,8 +27,10 @@ import com.example.recipeapp.recipes.viewModel.RecipeViewModelFactory
 
 
 class HomeFragment : Fragment() {
-    lateinit var recyclerView : RecyclerView
-    lateinit var myAdapter : HomeImageAdapter
+    lateinit var recyclerView: RecyclerView
+    lateinit var myAdapter: HomeImageAdapter
+    lateinit var searchView: SearchView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -44,38 +47,52 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var localDataSource = LocalRecipe.getInstance(requireActivity())
         var remoteDataSource = APIClient
-        var recipeViewModelFactory = RecipeViewModelFactory(RecipesRepositoryImplementation(LocalRecipe.getInstance(requireActivity()),remoteDataSource))
+        var recipeViewModelFactory = RecipeViewModelFactory(
+            RecipesRepositoryImplementation(
+                LocalRecipe.getInstance(requireActivity()), remoteDataSource
+            )
+        )
         val repository = RecipesRepositoryImplementation(localDataSource, remoteDataSource)
-        var viewModel : RecipeViewModel = ViewModelProvider(this, recipeViewModelFactory).get(RecipeViewModel ::class.java)
+        var viewModel: RecipeViewModel =
+            ViewModelProvider(this, recipeViewModelFactory).get(RecipeViewModel::class.java)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 //        val data = listOf(
 //            RecyclerDataClass(R.drawable.chorizo_mozarella),
 //            RecyclerDataClass(R.drawable.delicious_fried_noodle_with_smoky_effect))
 
 
-        myAdapter = HomeImageAdapter(requireActivity()){recipe ->
+        myAdapter = HomeImageAdapter(requireActivity()) { recipe ->
 
-        val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment(recipe)
-        view.findNavController().navigate(action)
+            val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment(recipe)
+            view.findNavController().navigate(action)
             // Handle item click here
-}
+        }
         recyclerView.adapter = myAdapter
-        Log.i("Result","Home Adapter : ")
 
         viewModel.getRecipes()
         viewModel.allRecipes?.observe(requireActivity(), Observer {
             myAdapter.setRecipeList(it)
-            Log.i("Result",it.toString())
             myAdapter.notifyDataSetChanged()
         })
 
+        searchView = view.findViewById(R.id.searchView)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
 
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.getSearchRecipes(newText.orEmpty())
+                return true
+            }
+
+
+        })
 
 
     }
-
-
-
 }
