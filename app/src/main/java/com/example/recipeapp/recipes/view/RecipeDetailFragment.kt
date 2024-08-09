@@ -52,7 +52,7 @@ class RecipeDetailFragment : Fragment() {
            titleView.text = recipe.strMeal
         }
        catch (ex:Exception){
-            Toast.makeText(requireContext()," Click on image first ",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext()," Touch an image to see its details.. ",Toast.LENGTH_SHORT).show()
             findNavController().navigateUp()
        }
 
