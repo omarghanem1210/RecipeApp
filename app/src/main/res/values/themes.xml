@@ -11,6 +11,12 @@
        <item name="android:editTextColor">@color/black</item>
     </style>
 
+    <style name="Base.Theme.SQL" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/green</item>
+        <item name="android:statusBarColor">@color/green</item>
+    </style>
 
 
 
