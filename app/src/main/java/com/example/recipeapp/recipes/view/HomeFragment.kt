@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var myAdapter: HomeImageAdapter
     lateinit var searchView: SearchView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -70,12 +71,10 @@ class HomeFragment : Fragment() {
             // Handle item click here
         }
         recyclerView.adapter = myAdapter
-        Log.i("Result", "Home Adapter : ")
 
         viewModel.getRecipes()
         viewModel.allRecipes?.observe(requireActivity(), Observer {
             myAdapter.setRecipeList(it)
-            Log.i("Result", it.toString())
             myAdapter.notifyDataSetChanged()
         })
 

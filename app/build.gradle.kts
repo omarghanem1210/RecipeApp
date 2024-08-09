@@ -105,4 +105,10 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    implementation ("com.google.android.exoplayer:exoplayer:2.18.1")
+    implementation ("androidx.media3:media3-exoplayer:1.0.0")
+    implementation ("androidx.media3:media3-ui:1.0.0")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+
 }

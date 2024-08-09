@@ -29,7 +29,24 @@
 
             />
 
+        <action
+            android:id="@+id/recipeDetailFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+
+
     </fragment>
+
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.example.recipeapp.recipes.view.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" >
+
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.example.recipeapp.recipes.view.FavouriteFragment"
