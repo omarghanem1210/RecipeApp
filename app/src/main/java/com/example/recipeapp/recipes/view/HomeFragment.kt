@@ -1,35 +1,40 @@
 package com.example.recipeapp.recipes.view
 
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 import com.example.recipeapp.database.recipe.LocalRecipe
+import com.example.recipeapp.models.UserManager
 import com.example.recipeapp.network.APIClient
 import com.example.recipeapp.recipes.repo.RecipesRepositoryImplementation
-import com.example.recipeapp.recipes.viewModel.FavoritesViewModel
 import com.example.recipeapp.recipes.viewModel.RecipeViewModel
 import com.example.recipeapp.recipes.viewModel.RecipeViewModelFactory
+import com.example.recipeapp.users.view.UserActivity
 
 
 class HomeFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var myAdapter: HomeImageAdapter
     lateinit var searchView: SearchView
+    lateinit var helloUser: TextView
+    lateinit var logOut: Button
+    private lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +60,26 @@ class HomeFragment : Fragment() {
         val repository = RecipesRepositoryImplementation(localDataSource, remoteDataSource)
         var viewModel: RecipeViewModel =
             ViewModelProvider(this, recipeViewModelFactory).get(RecipeViewModel::class.java)
+
+        sharedPreferences = context?.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)!!
+
+
+        helloUser = view.findViewById(R.id.textView)
+
+        helloUser.text = "Hello " + UserManager.currentUser?.username!!
+
+        logOut = view.findViewById(R.id.outButton)
+
+        logOut.setOnClickListener{
+            deleteUser()
+            val intent = Intent(getActivity(), UserActivity::class.java)
+            intent.flags = (Intent.FLAG_ACTIVITY_NEW_TASK
+                    or Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            activity?.startActivity(intent)
+
+
+        }
+
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager =
@@ -95,4 +120,11 @@ class HomeFragment : Fragment() {
 
 
     }
+
+    fun deleteUser() {
+        val editor = sharedPreferences.edit()
+        editor.remove("logged")
+        editor.apply()
+    }
+
 }

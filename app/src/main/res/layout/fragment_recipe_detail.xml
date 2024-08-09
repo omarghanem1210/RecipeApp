@@ -71,12 +71,10 @@
         android:layout_width="0dp"
         android:layout_height="180dp"
         android:layout_marginTop="340dp"
-        app:layout_constraintBottom_toTopOf="@+id/expandButton"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/DetailsId"
@@ -91,28 +89,30 @@
     <!-- Expand Button -->
 
     <!-- Create Video Button -->
-    <Button
-        android:id="@+id/expandButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/round_orange_button"
-        android:text="Show Full Details"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
     <Button
         android:id="@+id/videoButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="@drawable/round_orange_button"
         android:text="View Preparation video"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/expandButton" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <Button
+        android:id="@+id/favoriteButton"
+        android:layout_width="126dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/round_orange_button"
+        android:text="Set as favorite"
+        app:layout_constraintBottom_toTopOf="@+id/DetailTitle"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/RecipeDetailID" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
