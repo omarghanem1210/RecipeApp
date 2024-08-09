@@ -30,6 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="130dp"
+        android:layout_marginBottom="70dp"
         tools:listitem="@layout/item_fav_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
