@@ -33,7 +33,26 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.homeFragment -> {
+                    // Always navigate to the HomeFragment, clearing the back stack
+                    navController.popBackStack(R.id.homeFragment, false)
+                    navController.navigate(R.id.homeFragment)
+                    true
+                }
+                R.id.recipeDetailFragment -> {
+                    navController.navigate(R.id.recipeDetailFragment)
+                    true
+                }
+                R.id.favouriteFragment->{
+                    navController.navigate(R.id.favouriteFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 
 //        binding.bottomNav.setOnItemSelectedListener {
 //
@@ -59,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
