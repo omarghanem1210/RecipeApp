@@ -12,13 +12,13 @@ import kotlinx.coroutines.launch
 class FavoritesViewModel(var recipesRepository: RecipesRepository): ViewModel() {
 
 
-    private var _favorites = MutableLiveData<List<Recipe>>()
-    val favorites: LiveData<List<Recipe>> = _favorites
+    private var _favorites = MutableLiveData<MutableList<Recipe>>()
+    val favorites: LiveData<MutableList<Recipe>> = _favorites
 
 
     fun getFavorites(userName: String) {
         viewModelScope.launch {
-            _favorites.value = recipesRepository.getFavorites(userName)
+            _favorites.value = recipesRepository.getFavorites(userName).toMutableList()
         }
     }
 
