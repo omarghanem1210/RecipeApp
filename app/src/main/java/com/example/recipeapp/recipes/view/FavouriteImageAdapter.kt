@@ -14,14 +14,12 @@ import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.database.recipe.LocalRecipe
 import com.example.recipeapp.models.Recipe
-
-import com.example.recipeapp.recipes.view.RecyclerDataClass
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
 class FavouriteImageAdapter( val context: Context,private val onItemClick: (Recipe) -> Unit) : RecyclerView.Adapter<FavouriteImageAdapter.ItemViewHolder>() {
-    private var recipes : List<Recipe> = listOf<Recipe>()
+    private var recipes : MutableList<Recipe> = arrayListOf()
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val name : TextView
@@ -50,6 +48,7 @@ class FavouriteImageAdapter( val context: Context,private val onItemClick: (Reci
 
         holder.removeButton.setOnClickListener{
             Toast.makeText(context, "Item removed", Toast.LENGTH_LONG).show()
+            removeAt(position)
             GlobalScope.launch {
                 localDataSource.deleteRecipe(currentItem)
             }
@@ -63,10 +62,17 @@ class FavouriteImageAdapter( val context: Context,private val onItemClick: (Reci
     override fun getItemCount() : Int{
         Log.i("RESULT","Size of List is : ${recipes.size?: -1}"  )
         return recipes.size?:0 }
-    fun setRecipeList( products : List<Recipe>){
+    fun setRecipeList( products : MutableList<Recipe>){
         this.recipes = products
         notifyDataSetChanged()
     }
+
+    private fun removeAt(position: Int) {
+        recipes.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, recipes.size)
+    }
+
 //    inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //
 //    }
