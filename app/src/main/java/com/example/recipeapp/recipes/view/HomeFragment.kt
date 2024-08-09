@@ -50,9 +50,9 @@ class HomeFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
-        val data = listOf(
-            RecyclerDataClass(R.drawable.chorizo_mozarella),
-            RecyclerDataClass(R.drawable.delicious_fried_noodle_with_smoky_effect))
+//        val data = listOf(
+//            RecyclerDataClass(R.drawable.chorizo_mozarella),
+//            RecyclerDataClass(R.drawable.delicious_fried_noodle_with_smoky_effect))
 
 
         myAdapter = HomeImageAdapter(requireActivity()){recipe ->
