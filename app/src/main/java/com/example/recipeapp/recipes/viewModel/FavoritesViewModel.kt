@@ -13,12 +13,12 @@ class FavoritesViewModel(var recipesRepository: RecipesRepository): ViewModel() 
 
 
     private var _favorites = MutableLiveData<List<Recipe>>()
-    var favorites: LiveData<List<Recipe>> = _favorites
+    val favorites: LiveData<List<Recipe>> = _favorites
 
 
-    fun getFavorites(userId: Int) {
+    fun getFavorites(userName: String) {
         viewModelScope.launch {
-            _favorites.value = recipesRepository.getFavorites(userId)
+            _favorites.value = recipesRepository.getFavorites(userName)
         }
     }
 

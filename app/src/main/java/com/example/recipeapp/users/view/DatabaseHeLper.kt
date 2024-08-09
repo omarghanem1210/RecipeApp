@@ -1,9 +1,11 @@
 package com.example.recipeapp.users.view
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.recipeapp.models.User
 
 class DatabaseHeLper(private val context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -34,14 +36,21 @@ class DatabaseHeLper(private val context: Context): SQLiteOpenHelper(context, DA
         return db.insert(TABLE_NAME, null, values)
     }
 
-    fun readUser(username: String, password: String): Boolean{
+    @SuppressLint("Range")
+    fun readUser(username: String, password: String): User?{
         val db = readableDatabase
         val selection = "$COLUMN_USERNAME = ? AND $COLUMN_PASSWORD = ?"
         val selectionArgs = arrayOf(username, password)
         val cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)
+        val userExists = cursor.moveToFirst()
+        val resultUsername = if (userExists) cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)) else null
+        val resultPassword = if (userExists) cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)) else null
+        var user: User? = null
+        if(resultUsername != null && resultPassword != null){
+            user = User(username = resultUsername, passwordHash = resultPassword)
+        }
 
-        val userExists = cursor.count > 0
-        cursor.close()
-        return userExists
+        return user
+
     }
 }
