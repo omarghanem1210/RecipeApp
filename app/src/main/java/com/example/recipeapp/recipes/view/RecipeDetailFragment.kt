@@ -19,6 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -26,11 +27,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
+import com.example.recipeapp.database.recipe.LocalRecipe
 import com.example.recipeapp.databinding.ActivityMainBinding
 import com.example.recipeapp.databinding.FragmentRecipeDetailBinding
 import com.example.recipeapp.models.Recipe
+import com.example.recipeapp.models.UserManager
+import com.example.recipeapp.network.APIClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 
@@ -39,9 +44,7 @@ class RecipeDetailFragment : Fragment() {
 
     private val args: RecipeDetailFragmentArgs by navArgs()
     private lateinit var videoView: WebView
-    private lateinit var videoOverlay: FrameLayout
-    private lateinit var videoThumbnail: ImageView
-
+    private  lateinit var favoriteButton: Button
 
 
 
@@ -58,6 +61,30 @@ class RecipeDetailFragment : Fragment() {
             val detailView : TextView = view.findViewById(R.id.DetailsId)
             val titleView : TextView = view.findViewById(R.id.DetailTitle)
             val videoShow: Button = view.findViewById(R.id.videoButton)
+            favoriteButton = view.findViewById(R.id.favoriteButton)
+            var localDataSource = LocalRecipe.getInstance(requireContext())
+
+
+            favoriteButton.setOnClickListener{
+                lifecycleScope.launch {
+                    recipe.userName = UserManager.currentUser?.username
+                    try {
+                        var favorites = localDataSource.getFavorites(recipe?.userName!!)
+                        for(favorite in favorites){
+                            if(recipe.strMeal == favorite.strMeal){
+                                Toast.makeText(requireContext(), "This is already a favorite", Toast.LENGTH_LONG).show()
+                                return@launch
+                            }
+                        }
+                        localDataSource.insertRecipe(recipe)
+
+                    }
+                    catch(ex:Exception){
+                        Toast.makeText(requireContext(), "This is already a favorite", Toast.LENGTH_LONG).show()
+                    }
+                    Toast.makeText(requireContext(), "Congratulations! A new favorite", Toast.LENGTH_LONG).show()
+                }
+            }
 
 
             videoShow.setOnClickListener {
