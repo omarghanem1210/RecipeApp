@@ -13,8 +13,8 @@ class RecipesRepositoryImplementation(private var localDataSource: LocalRecipeIn
         return remoteDataSource.getRecipeResponse()
     }
 
-    override suspend fun getFavorites(userId: Int): List<Recipe> {
-        return localDataSource.getFavorites(userId)
+    override suspend fun getFavorites(userName: String): List<Recipe> {
+        return localDataSource.getFavorites(userName)
     }
 
     override suspend fun insertRecipe(recipe: Recipe) {

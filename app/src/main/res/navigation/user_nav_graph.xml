@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_nav_graph"
+    app:startDestination="@id/signupFragment">
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.recipeapp.users.view.SignupFragment"
+        android:label="signup"
+        tools:layout="@layout/signup" >
+
+        <action
+            android:id="@+id/signupFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.recipeapp.users.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login" >
+
+
+    </fragment>
+
+
+
+</navigation>

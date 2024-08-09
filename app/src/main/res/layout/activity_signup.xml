@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/signfrd"
-    android:padding="16dp"
-    tools:context=".SignupActivity">
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/SignupUsername"
