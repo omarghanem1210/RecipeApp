@@ -13,10 +13,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/yellow"
+            android:background="@color/white"
             android:minHeight="?attr/actionBarSize"
-            android:theme="@style/Theme.Appbar"
-            app:popupTheme="@style/menutext"
+
             >
 
         </androidx.appcompat.widget.Toolbar>
@@ -26,3 +25,7 @@
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+<!--    android:theme="@style/Theme.Appbar"-->
+<!--    app:popupTheme="@style/menutext"-->

@@ -1,4 +1,3 @@
-=======
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Base.Theme.RecipeApp" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -12,8 +11,8 @@
        <item name="android:editTextColor">@color/black</item>
     </style>
  
-      <style name="Theme.Appbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-      <style name="menutext" parent="android:TextAppearance.Widget.PopupMenu.Small"/>
+<!--      <style name="Theme.Appbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
+<!--      <style name="menutext" parent="android:TextAppearance.Widget.PopupMenu.Small"/>-->
 
 
     <style name="Base.Theme.SQL" parent="Theme.Material3.DayNight.NoActionBar">
