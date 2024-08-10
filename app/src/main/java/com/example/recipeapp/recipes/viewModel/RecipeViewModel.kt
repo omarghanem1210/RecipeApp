@@ -35,11 +35,17 @@ class RecipeViewModel(var recipesRepository: RecipesRepository): ViewModel() {
             getRecipes()
         }
         else{
-            val unFilteredList = _allRecipes.value ?: emptyList()
-            val filteredList = unFilteredList.filter { recipe ->
-                recipe.strMeal?.contains(searchString, ignoreCase = true) ?: false
-            }
+            viewModelScope.launch {
+                val apiResponse: Response<RecipeResponse> = recipesRepository.getRemoteRecipes()
+
+                val unFilteredList = apiResponse.body()?.meals!!
+                val filteredList = unFilteredList.filter { recipe ->
+                    recipe.strMeal?.contains(searchString, ignoreCase = true) ?: false
+                }
                 _allRecipes.value = filteredList
+
+
+            }
 
         }
 
