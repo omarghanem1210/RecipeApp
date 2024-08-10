@@ -2,34 +2,42 @@ package com.example.recipeapp.recipes.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.recipeapp.R
-import com.example.recipeapp.databinding.ActivityMainBinding
+import com.example.recipeapp.about_usFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var navController:NavController
-    lateinit var binding:ActivityMainBinding
+    lateinit var navController: NavController
+    lateinit var toolbar: Toolbar
+    lateinit var drawerLayout: DrawerLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding =ActivityMainBinding.inflate((layoutInflater))
-//        setContentView(binding.root)
-          setContentView(R.layout.activity_main)
+
+        setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
 
-        val navHostFragment= supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
-        val bottomNavigationView= findViewById<BottomNavigationView>(R.id.bottom_nav)
-        setupWithNavController(bottomNavigationView,navController)
-        Log.i("Result","MainNavigate : ")
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        setupWithNavController(bottomNavigationView, navController)
+        Log.i("Result", "MainNavigate : ")
 
 
 
@@ -41,54 +49,111 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
+
                 R.id.recipeDetailFragment -> {
                     navController.navigate(R.id.recipeDetailFragment)
                     true
                 }
-                R.id.favouriteFragment->{
+
+                R.id.favouriteFragment -> {
                     navController.navigate(R.id.favouriteFragment)
                     true
                 }
+
                 else -> false
             }
         }
+
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "RecipeAPP"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
-//        binding.bottomNav.setOnItemSelectedListener {
-//
-//            when (it.itemId) {
-//
-//                R.id.home -> NavController.navigate(R.id.homeFragment)
-//                R.id.recipe_detail -> NavController.navigate(R.id.recipeDetailFragment)
-//                R.id.fav -> NavController.navigate(R.id.favouiteFragment)
-//
-//            else -> {
-//
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.app_bar, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_about_us -> {
+                navController.navigate(R.id.about_usFragment)
+                return true
+            }
+
+
+//            R.id.action_logout -> {
+//                Toast.makeText(this, "action_logout", Toast.LENGTH_LONG).show()
+//                return true
 //            }
 //
+//            android.R.id.home -> {
+//                drawerLayout.openDrawer(GravityCompat.START)
+//                return true
+//            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+}
+
+
+// App bar main activity
+
+//    super.onCreate(savedInstanceState)
+//    setContentView(R.layout.activity_main)
 //
+//    toolbar = findViewById(R.id.toolbar)
+//    setSupportActionBar(toolbar)
+//    supportActionBar?.title = "RecipeAPP"
+//    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//
+//    drawerLayout = findViewById(R.id.drawer_layout)
+//    val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
+//    drawerLayout.addDrawerListener(toggle)
+//    toggle.syncState()
+//
+//}
+//
+//override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//    menuInflater.inflate(R.menu.app_bar, menu)
+//    return super.onCreateOptionsMenu(menu)
+//}
+//
+//override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//    when (item.itemId) {
+//        R.id.action_about_us -> {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, about_usFragment())
+//                .addToBackStack(null)
+//                .commit()
+//            return true
 //        }
-//            true
+//        R.id.action_logout -> {
+//            Toast.makeText(this, "action_logout", Toast.LENGTH_LONG).show()
+//            return true
 //        }
-
-
-
-
-
-
-
-
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-
-//    fun replaceFragment(fragment: Fragment){
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-////        fragmentTransaction.replace(R.id.constraintLayout,fragment)
-//        fragmentTransaction.commit()
-
-    }
-
+//        android.R.id.home -> {
+//            drawerLayout.openDrawer(GravityCompat.START)
+//            return true
+//        }
+//    }
+//    return super.onOptionsItemSelected(item)
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//    override fun onSupportNavigateUp(): Boolean {
+//        return navController.navigateUp() || super.onSupportNavigateUp()
+//    }
+//
+//
+//
+//

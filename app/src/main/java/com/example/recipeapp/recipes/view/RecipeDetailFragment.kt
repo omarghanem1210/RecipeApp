@@ -28,8 +28,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.database.recipe.LocalRecipe
-import com.example.recipeapp.databinding.ActivityMainBinding
-import com.example.recipeapp.databinding.FragmentRecipeDetailBinding
+
 import com.example.recipeapp.models.Recipe
 import com.example.recipeapp.models.UserManager
 import com.example.recipeapp.network.APIClient
