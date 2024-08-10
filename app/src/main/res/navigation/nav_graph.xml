@@ -24,4 +24,9 @@
         android:name="com.example.recipeapp.RecipeFragment"
         android:label="fragment_recipe2"
         tools:layout="@layout/fragment_recipe2" />
+    <fragment
+        android:id="@+id/about_usFragment"
+        android:name="com.example.recipeapp.about_usFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>
