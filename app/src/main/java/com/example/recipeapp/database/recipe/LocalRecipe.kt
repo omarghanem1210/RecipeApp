@@ -22,8 +22,8 @@ class LocalRecipe private constructor(context: Context) : LocalRecipeInterface {
         }
     }
 
-    override fun getFavorites(userId: Int): List<Recipe> {
-        return recipeDao.getFavorites(userId)
+    override fun getFavorites(userName: String): List<Recipe> {
+        return recipeDao.getFavorites(userName)
     }
 
     override suspend fun insertRecipe(quote: Recipe) {

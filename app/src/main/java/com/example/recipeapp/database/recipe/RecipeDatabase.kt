@@ -17,7 +17,7 @@ abstract class RecipeDatabase: RoomDatabase() {
                 if (instance == null)
                     instance = Room.databaseBuilder(
                         context.applicationContext, RecipeDatabase::class.java, "RecipeDatabase"
-                    ).build()
+                    ).allowMainThreadQueries().build()
             }
             return instance
         }

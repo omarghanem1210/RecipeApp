@@ -8,8 +8,8 @@ import com.example.recipeapp.models.Recipe
 
 @Dao
 interface RecipeDao {
-    @Query("Select * from Recipe where idMeal = :userId")
-    fun getFavorites(userId: Int): List<Recipe>
+    @Query("Select * from Recipe where userName = :userName")
+    fun getFavorites(userName: String): List<Recipe>
 
     @Insert
     suspend fun insertRecipe(recipe: Recipe)

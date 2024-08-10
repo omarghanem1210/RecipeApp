@@ -3,30 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/searchFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.recipeapp.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        android:id="@+id/homeFragment"
+        android:name="com.example.recipeapp.recipes.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_searchFragment_to_item_search_resultFragment"
-            app:destination="@id/item_search_resultFragment" />
+            android:id="@+id/action_homeFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+
     </fragment>
+
     <fragment
-        android:id="@+id/item_search_resultFragment"
-        android:name="com.example.recipeapp.item_search_resultFragment"
-        android:label="fragment_item_search_result"
-        tools:layout="@layout/fragment_item_search_result" />
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.example.recipeapp.recipes.view.RecipeDetailFragment"
+        android:label="fragment_recipe_detail"
+        tools:layout="@layout/fragment_recipe_detail" >
+        <argument
+            android:name="RecipeArg"
+            app:argType="com.example.recipeapp.models.Recipe"
+
+            />
+
+        <action
+            android:id="@+id/recipeDetailFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+
+    </fragment>
+
     <fragment
-        android:id="@+id/recipeFragment2"
-        android:name="com.example.recipeapp.RecipeFragment"
-        android:label="fragment_recipe2"
-        tools:layout="@layout/fragment_recipe2" />
+        android:id="@+id/videoFragment"
+        android:name="com.example.recipeapp.recipes.view.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" >
+
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+
     <fragment
-        android:id="@+id/about_usFragment"
-        android:name="com.example.recipeapp.about_usFragment"
-        android:label="fragment_about_us"
-        tools:layout="@layout/fragment_about_us" />
+        android:id="@+id/favouriteFragment"
+        android:name="com.example.recipeapp.recipes.view.FavouriteFragment"
+        android:label="fragment_favouite"
+        tools:layout="@layout/fragment_favourite">
+    <action
+        android:id="@+id/action_favoritesFragment_to_recipeDetailFragment"
+        app:destination="@id/recipeDetailFragment" />
+
+    </fragment>
+
 </navigation>
