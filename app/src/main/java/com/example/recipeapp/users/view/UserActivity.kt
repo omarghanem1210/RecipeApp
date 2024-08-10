@@ -46,9 +46,6 @@ class UserActivity : AppCompatActivity() {
 
 
 
-
-
-
     }
 
     fun getUser(): User? {
