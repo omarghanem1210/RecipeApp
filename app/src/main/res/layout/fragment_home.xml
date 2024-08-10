@@ -39,15 +39,16 @@
         app:layout_constraintStart_toStartOf="@id/guideline2"
 
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/What"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="84dp"
         android:text="What would you like to cook today?"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
 
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.0"
@@ -102,7 +103,7 @@
         android:id="@+id/RecipeHomeID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         android:text="Recipe Home"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -114,7 +115,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
 
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -122,18 +123,18 @@
         app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/outButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+<!--    <Button-->
+<!--        android:id="@+id/outButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
 
-        android:background="@drawable/round_orange_button"
-        android:text="Log out"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--        android:background="@drawable/round_orange_button"-->
+<!--        android:text="Log out"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/guideline"-->
+<!--        app:layout_constraintHorizontal_bias="0.496"-->
+<!--        app:layout_constraintStart_toStartOf="@id/guideline2"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
