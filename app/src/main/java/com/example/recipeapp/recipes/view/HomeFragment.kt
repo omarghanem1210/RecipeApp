@@ -68,17 +68,6 @@ class HomeFragment : Fragment() {
 
         helloUser.text = "Hello " + UserManager.currentUser?.username!! + ","
 
-        logOut = view.findViewById(R.id.outButton)
-
-        logOut.setOnClickListener{
-            deleteUser()
-            val intent = Intent(getActivity(), UserActivity::class.java)
-            intent.flags = (Intent.FLAG_ACTIVITY_NEW_TASK
-                    or Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            activity?.startActivity(intent)
-
-
-        }
 
 
         recyclerView = view.findViewById(R.id.recyclerView)
