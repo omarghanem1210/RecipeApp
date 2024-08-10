@@ -39,7 +39,6 @@
             android:id="@+id/recipeDetailFragment_to_videoFragment"
             app:destination="@id/videoFragment" />
 
-
     </fragment>
 
     <fragment
@@ -74,10 +73,6 @@
             android:id="@+id/action_searchFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
 
-
     </fragment>
-
-
-
 
 </navigation>

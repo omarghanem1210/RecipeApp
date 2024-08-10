@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
 
         helloUser = view.findViewById(R.id.textView)
 
-        helloUser.text = "Hello " + UserManager.currentUser?.username!!
+        helloUser.text = "Hello " + UserManager.currentUser?.username!! + ","
 
         logOut = view.findViewById(R.id.outButton)
 
