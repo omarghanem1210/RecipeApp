@@ -1,5 +1,8 @@
 package com.example.recipeapp.recipes.view
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -19,18 +22,20 @@ import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.recipeapp.R
 import com.example.recipeapp.about_usFragment
+import com.example.recipeapp.users.view.UserActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     lateinit var toolbar: Toolbar
-    lateinit var drawerLayout: DrawerLayout
+    lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)!!
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
@@ -84,14 +89,23 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_logout -> {
-                navController.navigate(R.id.signupFragment)
-                return true
+                deleteUser()
+                val intent = Intent(this, UserActivity::class.java)
+                intent.flags = (Intent.FLAG_ACTIVITY_NEW_TASK
+                        or Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                this.startActivity(intent)
             }
 
 
         }
         return super.onOptionsItemSelected(item)
     }
+    fun deleteUser() {
+        val editor = sharedPreferences.edit()
+        editor.remove("logged")
+        editor.apply()
+    }
+
 }
 
 

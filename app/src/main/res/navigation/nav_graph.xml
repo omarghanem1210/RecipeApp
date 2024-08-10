@@ -86,21 +86,4 @@
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
 
-    <fragment
-        android:id="@+id/signupFragment"
-        android:name="com.example.recipeapp.users.view.SignupFragment"
-        android:label="signup"
-        tools:layout="@layout/signup" >
-        <action
-            android:id="@+id/signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.recipeapp.users.view.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/login"
-        />
-
 </navigation>

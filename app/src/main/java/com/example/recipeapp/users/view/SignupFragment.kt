@@ -25,7 +25,6 @@ class SignupFragment: Fragment() {
     lateinit var signupButton: Button
 
     private lateinit var sharedPreferences: SharedPreferences
-    private val gson = Gson()
 
 
     override fun onCreateView(
@@ -42,6 +41,7 @@ class SignupFragment: Fragment() {
         val databaseHelper = DatabaseHeLper(requireContext())
 
         loginButton.setOnClickListener{
+            clear()
             val action = SignupFragmentDirections.signupFragmentToLoginFragment()
             view.findNavController().navigate(action)
         }
@@ -51,12 +51,19 @@ class SignupFragment: Fragment() {
             val password = passwordTextEdit.text.toString()
             val hashedPassword = md5(password)
             val oldUser = databaseHelper.readUser(username, hashedPassword)
+
+            if(password != confirmedPasswordTextEdit.text.toString()){
+                Toast.makeText(requireContext(), "Password Written Incorrectly", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+
+            }
             if (oldUser != null){
                 Toast.makeText(requireContext(), "Username Already Exists", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             databaseHelper.insertUser(username, hashedPassword)
             val action = SignupFragmentDirections.signupFragmentToLoginFragment()
+            clear()
             view.findNavController().navigate(action)
 
         }
@@ -74,6 +81,12 @@ class SignupFragment: Fragment() {
         val editor = sharedPreferences.edit()
         editor.remove("logged")
         editor.apply()
+    }
+
+    fun clear(){
+        usernameTextEdit.setText("")
+        passwordTextEdit.setText("")
+        confirmedPasswordTextEdit.setText("")
     }
 
 

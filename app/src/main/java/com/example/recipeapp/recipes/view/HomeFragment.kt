@@ -103,10 +103,4 @@ class HomeFragment : Fragment() {
 
     }
 
-    fun deleteUser() {
-        val editor = sharedPreferences.edit()
-        editor.remove("logged")
-        editor.apply()
-    }
-
 }

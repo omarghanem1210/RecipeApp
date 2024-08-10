@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.recipeapp.MainActivity
+import androidx.navigation.findNavController
 import com.example.recipeapp.R
 import com.example.recipeapp.models.User
 import com.example.recipeapp.models.UserManager
@@ -24,6 +24,7 @@ class LoginFragment: Fragment() {
     lateinit var usernameTextEdit: EditText
     lateinit var passwordTextEdit: EditText
     lateinit var logInButton: Button
+    lateinit var signupLink: Button
 
     private lateinit var sharedPreferences: SharedPreferences
     private val gson = Gson()
@@ -39,6 +40,16 @@ class LoginFragment: Fragment() {
         passwordTextEdit = view.findViewById(R.id.password)
         logInButton = view.findViewById(R.id.loginButton)
         val databaseHeLper = DatabaseHeLper(requireContext())
+
+        signupLink = view.findViewById(R.id.loginLink)
+
+        signupLink.setOnClickListener{
+            usernameTextEdit.setText("")
+            passwordTextEdit.setText("")
+            val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+            view.findNavController().navigate(action)
+
+        }
 
         sharedPreferences = context?.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)!!
 
