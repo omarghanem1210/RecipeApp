@@ -9,7 +9,7 @@
         android:id="@+id/recipeDetailFragment"
         android:icon="@drawable/baseline_assignment_24"/>
 
-    <item android:title="Favourites"
+    <item android:title="Favorites"
         android:id="@+id/favouriteFragment"
         android:icon="@drawable/baseline_app_registration_24"/>
 </menu>
