@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -72,8 +73,23 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "RecipeApp"
-       
 
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.signupFragment) {
+
+                bottomNavigationView.visibility = View.GONE
+            }
+
+            else if (destination.id == R.id.loginFragment){
+                bottomNavigationView.visibility = View.GONE
+
+            }
+            else {
+                bottomNavigationView.visibility = View.VISIBLE
+
+            }
+        }
 
     }
 
