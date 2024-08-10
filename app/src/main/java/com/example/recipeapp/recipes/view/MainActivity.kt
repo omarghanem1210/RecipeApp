@@ -83,6 +83,10 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.about_usFragment)
                 return true
             }
+            R.id.action_logout -> {
+                navController.navigate(R.id.SignupUsername)
+                return true
+            }
 
 
 //            R.id.action_logout -> {
