@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_logout -> {
-                navController.navigate(R.id.SignupUsername)
+                navController.navigate(R.id.signupFragment)
                 return true
             }
 
