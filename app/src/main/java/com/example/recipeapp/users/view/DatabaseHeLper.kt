@@ -39,8 +39,8 @@ class DatabaseHeLper(private val context: Context): SQLiteOpenHelper(context, DA
     @SuppressLint("Range")
     fun readUser(username: String, password: String): User?{
         val db = readableDatabase
-        val selection = "$COLUMN_USERNAME = ? AND $COLUMN_PASSWORD = ?"
-        val selectionArgs = arrayOf(username, password)
+        val selection = "$COLUMN_USERNAME = ?"
+        val selectionArgs = arrayOf(username)
         val cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)
         val userExists = cursor.moveToFirst()
         val resultUsername = if (userExists) cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)) else null

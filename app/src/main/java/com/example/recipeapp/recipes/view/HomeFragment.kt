@@ -103,20 +103,13 @@ class HomeFragment : Fragment() {
             myAdapter.notifyDataSetChanged()
         })
 
-        searchView = view.findViewById(R.id.searchView)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+        var searchButton: Button = view.findViewById(R.id.searchButton)
 
-            }
+        searchButton.setOnClickListener{
+            val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+            view.findNavController().navigate(action)
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.getSearchRecipes(newText.orEmpty())
-                return true
-            }
-
-
-        })
+        }
 
 
     }

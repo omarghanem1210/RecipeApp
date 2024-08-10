@@ -12,15 +12,13 @@
 
 
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:background="@drawable/search_view_background"
+    <Button
+        android:id="@+id/searchButton"
+        android:background="@drawable/round_orange_button"
 
-        style="@style/SearchViewStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-         android:theme="@style/ThemeOverlay.Search"
-
+        android:text="Search All Reecipes"
 
         android:layout_marginTop="170dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
