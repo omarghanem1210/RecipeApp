@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 
 import com.example.recipeapp.R
 import com.example.recipeapp.models.User
@@ -38,7 +39,14 @@ class LoginFragment: Fragment() {
         usernameTextEdit = view.findViewById(R.id.username)
         passwordTextEdit = view.findViewById(R.id.password)
         logInButton = view.findViewById(R.id.loginButton)
+        var signuptLink: Button = view.findViewById(R.id.loginLink)
         val databaseHeLper = DatabaseHeLper(requireContext())
+
+        signuptLink.setOnClickListener{
+            val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+            view.findNavController().navigate(action)
+
+        }
 
         sharedPreferences = context?.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)!!
 

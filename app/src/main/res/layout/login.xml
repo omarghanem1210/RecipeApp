@@ -1,59 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#FFF6F6"
-    android:gravity="center">
+    android:background="@drawable/food2">
 
-<TextView
-android:id="@+id/loginTitle"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Login"
-android:textSize="24sp"
-android:textColor="#FF5722"
-android:layout_centerHorizontal="true"
-android:layout_marginBottom="24dp"/>
-
-<EditText
-android:id="@+id/username"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="Username"
-android:padding="12dp"
-android:layout_below="@id/loginTitle"
-android:layout_marginBottom="16dp"/>
-
-<EditText
-android:id="@+id/password"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="Password"
-android:padding="12dp"
-android:layout_below="@id/username"
-android:layout_marginBottom="24dp"
-android:inputType="textPassword"/>
-
-<Button
-android:id="@+id/loginButton"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="Login"
-android:textColor="#FFFFFF"
-android:background="#FF5722"
-android:layout_below="@id/password"
-android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/loginLink"
-        android:layout_width="382dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="#FF5722"
-        android:textColor="#FFFFFF"
-        android:text="Do NOT HAVE AN ACCOUNT? SIGNUP" />
+        android:layout_alignParentTop="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/loginTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="24sp"
+                android:textColor="#FF5722"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"/>
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="#FFFFFF"
+                android:background="#FF5722"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/loginLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#FF5722"
+                android:textColor="#FFFFFF"
+                android:text="DO NOT HAVE AN ACCOUNT? SIGNUP" />
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

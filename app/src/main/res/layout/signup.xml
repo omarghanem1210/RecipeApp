@@ -2,67 +2,72 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#FFF6F6"
-    android:gravity="center">
+    android:background="@drawable/food2">
 
-<TextView
-android:id="@+id/signupTitle"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Sign Up"
-android:textSize="24sp"
-android:textColor="#FF5722"
-android:layout_centerHorizontal="true"
-android:layout_marginBottom="24dp"/>
-
-<EditText
-android:id="@+id/username"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="Username"
-android:padding="12dp"
-android:layout_below="@id/signupTitle"
-android:layout_marginBottom="16dp"/>
-
-<EditText
-android:id="@+id/password"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="Password"
-android:padding="12dp"
-android:layout_below="@id/username"
-android:layout_marginBottom="16dp"
-android:inputType="textPassword"/>
-
-<EditText
-android:id="@+id/confirmPassword"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="Confirm Password"
-android:padding="12dp"
-android:layout_below="@id/password"
-android:layout_marginBottom="24dp"
-android:inputType="textPassword"/>
-
-<Button
-android:id="@+id/signupButton"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="Sign Up"
-android:textColor="#FFFFFF"
-android:background="#FF5722"
-android:layout_below="@id/confirmPassword"
-android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/loginLink"
-        android:layout_width="382dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signupButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="#FF5722"
-        android:textColor="#FFFFFF"
-        android:text="Already have an account? Login" />
-    </RelativeLayout>
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#80FFFFFF"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/signupTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="24sp"
+            android:textColor="#FF5722"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPassword"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textPassword"
+            android:background="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/signupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
+            android:background="#FF5722"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/loginLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#FF5722"
+            android:textColor="#FFFFFF"
+            android:text="Already have an account? Login" />
+
+    </LinearLayout>
+</RelativeLayout>
